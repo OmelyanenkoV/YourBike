@@ -2,13 +2,13 @@
     <div class="nav-wrapper container">
       <a href="#" class="brand-logo">YouBike</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li>
+        <li {{#if isHome}} class="active" {{/if}}>
             <a href="/">Главная</a>
         </li>
-        <li>
+        <li {{#if isBicycles}} class="active" {{/if}}>
             <a href="/bicycles">Велосипеды</a>
         </li>
-        <li>
+        <li {{#if isAdd}} class="active" {{/if}}>
             <a href="/add">Добавить</a>
         </li>
       </ul>

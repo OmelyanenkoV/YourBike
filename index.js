@@ -22,13 +22,24 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', {
+        title: 'Главная страница',
+        isHome: true
+    })
 })
 
-app.get('/about', (req, res) => {
-    res.render('about')
+app.get('/add', (req, res) => {
+    res.render('add', {
+        title: 'Добавить велосипед',
+        isAdd: true
+    })
 })
-
+app.get('/bicycles', (req, res) => {
+    res.render('bicycles', {
+        title: 'Велосипеды',
+        isBicycles: true
+    })
+})
 
 
 
