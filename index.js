@@ -19,10 +19,15 @@ app.set('views', 'views')
 // registration public css
 app.use(express.static(path.join(__dirname, 'public')))
 
-// use routes
+app.use(express.urlencoded({extended: true}))
+
+// routes
 app.use('/', homeRoutes)
 app.use('/add', addRoutes)
 app.use('/bicycles', bicyclesRoutes)
+
+
+
 
 
 
