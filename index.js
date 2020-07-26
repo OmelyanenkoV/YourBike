@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const exphbs = require('express-handlebars')
+const { ppid } = require('process')
 const app = express()
 
 // registration and setup handlebars
@@ -11,6 +12,9 @@ const hbs = exphbs.create({
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
+
+// registration public css
+app.use(express.static(path.join(__dirname, 'public')))
 
 
 
