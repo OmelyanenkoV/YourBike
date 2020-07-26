@@ -3,6 +3,9 @@ const path = require('path')
 const exphbs = require('express-handlebars')
 const { ppid } = require('process')
 const app = express()
+const homeRoutes = require('./routes/home')
+const addRoutes = require('./routes/add')
+const bicyclesRoutes = require('./routes/bicycles')
 
 // registration and setup handlebars
 const hbs = exphbs.create({
@@ -16,30 +19,13 @@ app.set('views', 'views')
 // registration public css
 app.use(express.static(path.join(__dirname, 'public')))
 
+// use routes
+app.use('/', homeRoutes)
+app.use('/add', addRoutes)
+app.use('/bicycles', bicyclesRoutes)
 
 
 
-
-
-app.get('/', (req, res) => {
-    res.render('index', {
-        title: 'Главная страница',
-        isHome: true
-    })
-})
-
-app.get('/add', (req, res) => {
-    res.render('add', {
-        title: 'Добавить велосипед',
-        isAdd: true
-    })
-})
-app.get('/bicycles', (req, res) => {
-    res.render('bicycles', {
-        title: 'Велосипеды',
-        isBicycles: true
-    })
-})
 
 
 
