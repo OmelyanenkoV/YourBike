@@ -1,4 +1,5 @@
 const {Router} = require('express')
+const Bicycle = require('../models/bicycle')
 const router = Router()
 
 router.get('/', (req, res) => {
@@ -8,9 +9,10 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
-    console.log(req.body)
+router.post('/', async (req, res) => {
+    const bicycle = new Bicycle(req.body.title, req.body.price, req.body.img)
 
+    await bicycle.save()
     res.redirect('/')
 })
 
