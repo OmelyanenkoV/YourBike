@@ -1,3 +1,16 @@
 .price {
     font-size: 2rem;
 }
+.bicycle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bicycle h1 {
+    margin-bottom: 2rem;
+}
+.bicycle img {
+    max-width: 600px;
+    height: auto;
+}

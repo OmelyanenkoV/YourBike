@@ -53,6 +53,10 @@ class Bicycle {
             )
         })
     }
+    static async getById (id) {
+        const bicycles = await Bicycle.getAll()
+        return bicycles.find(c => c.id === id)
+    }
 }
 
 module.exports = Bicycle

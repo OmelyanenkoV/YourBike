@@ -11,5 +11,13 @@ router.get('/', async (req, res) => {
     })
 })
 
+router.get('/:id', async (req, res) => {
+    const bicycle = await Bicycle.getById(req.params.id)
+    res.render('bicycle', {
+        layout: 'empty',
+        title: `Велосипед ${bicycle.title}`,
+        bicycle
+    })
+})
 
 module.exports = router

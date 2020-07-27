@@ -4,5 +4,3 @@ document.querySelectorAll('.price').forEach(node => {
         style: 'currency'
     }).format(node.textContent)
 })
-
-console.log('kek')
