@@ -1,0 +1,22 @@
+<h1>Редактировать {{bicycle.title}}</h1>
+
+<form action="/bicycles/edit" method="POST">
+    <div class="input-field">
+        <input id="title" name="title" type="text" class="validate" required value="{{bicycle.title}}">
+        <label for="title">Название велосипеда</label>
+        <span class="helper-text" data-error="Введите название"></span>
+    </div>
+    <div class="input-field">
+        <input id="price" name="price" type="number" class="validate" required min="1" value="{{bicycle.price}}">
+        <label for="proce">Цена</label>
+        <span class="helper-text" data-error="Введите цену"></span>
+    </div>
+    <div class="input-field">
+        <input id="img" name="img" type="text" class="validate" required value="{{bicycle.img}}">
+        <label for="img">URL фото велосипеда </label>
+        <span class="helper-text" data-error="Добавьте фотографию"></span>
+    </div>
+    <input type="hidden" name="id" value="{{bicycle.id}}">
+
+    <button class="btn btn-primary">Редактировать</button>
+</form>
