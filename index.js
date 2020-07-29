@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 const { ppid } = require('process')
 const app = express()
 const homeRoutes = require('./routes/home')
+const cardRoutes = require('./routes/card')
 const addRoutes = require('./routes/add')
 const bicyclesRoutes = require('./routes/bicycles')
 
@@ -25,6 +26,7 @@ app.use(express.urlencoded({extended: true}))
 app.use('/', homeRoutes)
 app.use('/add', addRoutes)
 app.use('/bicycles', bicyclesRoutes)
+app.use('/card', cardRoutes)
 
 
 
