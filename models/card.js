@@ -2,7 +2,11 @@ const path = require("path");
 const fs = require("fs");
 const { resolve } = require("path");
 
-const p = path.join(path.dirname(process.mainModule.filename), "data", "card.json");
+const p = path.join(
+  path.dirname(process.mainModule.filename),
+  "data",
+  "card.json"
+);
 
 class Card {
   static async add(bicycle) {
@@ -21,16 +25,38 @@ class Card {
     }
     card.price += +bicycle.price;
 
+    return new Promise((resolve, reject) => {
+      fs.writeFile(p, JSON.stringify(card), (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    });
+  }
+  static async remove(id) {
+    const card = await Card.fetch();
+    const indx = card.bicycles.findIndex((c) => c.id === id);
+    const bicycle = card.bicycles[indx];
+    if (bicycle.count === 1) {
+      // удалить
+      card.bicycles = card.bicycles.filter((c) => c.id !== id);
+    } else {
+      //изменить количество
+      card.bicycles[indx].count--;
+    }
+    card.price -= bicycle.price;
 
     return new Promise((resolve, reject) => {
-        fs.writeFile(p, JSON.stringify(card), err => {
-            if(err) {
-                reject(err)
-            } else {
-                resolve ()
-            }
-        })
-    })
+      fs.writeFile(p, JSON.stringify(card), (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(card);
+        }
+      });
+    });
   }
   static async fetch() {
     return new Promise((resolve, reject) => {
